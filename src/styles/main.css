@@ -2,3 +2,9 @@
     position: relative;
 }
 
+.search_botton{
+    margin-left: 1rem;
+}
+.input-form{
+    display:flex;
+}
