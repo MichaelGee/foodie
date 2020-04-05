@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&display=swap');
+body{
+  font-family: 'Nunito Sans', sans-serif;
+}
 .search{
     position: relative;
 }
@@ -7,4 +11,16 @@
 }
 .input-form{
     display:flex;
+}
+
+@media screen and (max-width: 700px){
+    .search{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .search{
+        width: 90%;
+    }
 }
