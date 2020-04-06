@@ -13,6 +13,21 @@ body{
     display:flex;
 }
 
+.image{
+ width: 100%;
+}
+
+.card-container{
+    background: whitesmoke;
+}
+.result-wrapper{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    row-gap: 1rem;
+}
+
 @media screen and (max-width: 700px){
     .search{
         width: 80%;

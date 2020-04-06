@@ -1,32 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/main.css";
 import SearchIcon from "../search.svg";
 import Cards from "./cards";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 
 const Searchbar = () => {
-  const url = "https://cors-anywhere.herokuapp.com/https://api.edamam.com/";
   const api = "ff9d0678f577bcae1260e1e436ca35d6";
   const id = "4d71ca3d";
   const [name, setName] = useState("");
-  const [recipe, setRecipe] = useState([]);
-  const [search, setSearch] = useState("");
+  const [recipes, setRecipes] = useState([]);
 
-  useEffect(() => {
-    /* Fetch the recipe API */
-    const getRecipe = async () => {
-      const response = await axios.get(
-        `${url}search?q=${name}&app_id=${id}&app_key=${api}`
-      );
-      setRecipe(response.data);
-    };
-    getRecipe();
-  }, [search]);
+  const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${name}&app_id=${id}&app_key=${api}`;
 
-  console.log(recipe);
+  /* Fetch the recipe API */
+  const getRecipe = async () => {
+    const results = await axios.get(url);
+    setRecipes(results.data.hits);
+    console.log(results);
+    setName("");
+  };
 
   const onSubmit = e => {
     e.preventDefault();
+    getRecipe();
+  };
+
+  const onChange = e => {
+    setName(e.target.value);
   };
 
   return (
@@ -44,11 +45,10 @@ const Searchbar = () => {
             autoComplete='off'
             spellCheck='true'
             dir='auto'
-            value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={onChange}
           />
           <button
-            onClick={() => setSearch(name)}
+            onClick={getRecipe}
             type='button'
             className='search_botton px-6 py-2 border rounded text-black border-pink-800 hover:text-white hover:bg-pink-800 hover:border-pink-800'
           >
@@ -56,7 +56,12 @@ const Searchbar = () => {
           </button>
         </form>
       </div>
-      <Cards />
+      <div className='mt-10'>
+        <div className='result-wrapper'>
+          {recipes !== [] &&
+            recipes.map(recipe => <Cards key={uuidv4()} recipe={recipe} />)}
+        </div>
+      </div>
     </div>
   );
 };
