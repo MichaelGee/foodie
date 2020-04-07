@@ -20,6 +20,8 @@ body{
 .card-container{
     background: whitesmoke;
     height: 100%;
+    width: 100%;
+    margin: 0 auto;
 }
 .result-wrapper{
     width: 90%;
