@@ -24,8 +24,6 @@ body{
     margin: 0 auto;
 }
 .result-wrapper{
-    width: 90%;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     row-gap: 1rem;
