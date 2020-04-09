@@ -40,3 +40,12 @@ body{
         width: 90%;
     }
 }
+
+@media screen and (max-width: 410px){
+    .result-wrapper{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .card-container{
+        width: 80%;
+    }
+}
