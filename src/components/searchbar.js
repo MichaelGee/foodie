@@ -21,12 +21,12 @@ const Searchbar = () => {
     setName("");
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     getRecipe();
   };
 
-  const onChange = e => {
+  const onChange = (e) => {
     setName(e.target.value);
   };
 
@@ -39,7 +39,7 @@ const Searchbar = () => {
         <form onSubmit={onSubmit} className='input-form'>
           <input
             id='search_form'
-            className='outline-none transition-colors w-full duration-100 ease-in-out  border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-sm bg-gray-200 py-2 pr-4 pl-10 block appearance-none leading-normal ds-input'
+            className='outline-none transition-colors w-full duration-100 ease-in-out  border border-transparent focus:bg-white focus:border-gray-300 placeholder-gray-600 rounded-sm bg-gray-200 py-1 sm:py-2 pr-4 pl-10 block appearance-none leading-normal ds-input'
             type='text'
             placeholder='Search for recipe..'
             autoComplete='off'
@@ -50,7 +50,7 @@ const Searchbar = () => {
           <button
             onClick={getRecipe}
             type='button'
-            className='search_botton px-6 py-2 border rounded text-black border-pink-800 hover:text-white hover:bg-pink-800 hover:border-pink-800'
+            className='search_botton px-6 py-1 sm:py-2 border rounded text-black border-pink-800 hover:text-white hover:bg-pink-800 hover:border-pink-800'
           >
             Search
           </button>
@@ -59,7 +59,7 @@ const Searchbar = () => {
       <div className='mt-10'>
         <div className='result-wrapper'>
           {recipes !== [] &&
-            recipes.map(recipe => <Cards key={uuidv4()} recipe={recipe} />)}
+            recipes.map((recipe) => <Cards key={uuidv4()} recipe={recipe} />)}
         </div>
       </div>
     </div>
