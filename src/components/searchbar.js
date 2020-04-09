@@ -17,7 +17,7 @@ const Searchbar = () => {
   const getRecipe = async () => {
     const results = await axios.get(url);
     setRecipes(results.data.hits);
-    console.log(results);
+    /* console.log(results); */
     setName("");
   };
 
