@@ -4,12 +4,14 @@ import SearchIcon from "../search.svg";
 import Cards from "./cards";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
+import Loader from "./loader";
 
 const Searchbar = () => {
-  const api = "ff9d0678f577bcae1260e1e436ca35d6";
+  const api = "ecc5b88d38aedfa2865260d92eb28678";
   const id = "4d71ca3d";
   const [name, setName] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${name}&app_id=${id}&app_key=${api}`;
 
@@ -17,13 +19,14 @@ const Searchbar = () => {
   const getRecipe = async () => {
     const results = await axios.get(url);
     setRecipes(results.data.hits);
-    /* console.log(results); */
-    setName("");
+    setLoading(false);
+    console.log(results);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     getRecipe();
+    setLoading(true);
   };
 
   const onChange = (e) => {
